@@ -1,0 +1,17 @@
+<!DOCTYPE qgis_style>
+<qgis_style version="2">
+  <symbols/>
+  <colorramps>
+    <colorramp name="bunt" type="gradient">
+      <prop k="color1" v="0,0,255,255"/>
+      <prop k="color2" v="3,255,243,255"/>
+      <prop k="discrete" v="1"/>
+      <prop k="rampType" v="gradient"/>
+      <prop k="stops" v="0.0877404;187,13,112,255:0.186298;255,230,1,255:0.296875;0,104,29,255:0.41226;255,132,0,255:0.519231;0,255,0,255:0.643029;252,75,255,255:0.753606;189,86,21,255:0.877404;0,243,255,255"/>
+    </colorramp>
+  </colorramps>
+  <textformats/>
+  <labelsettings/>
+  <legendpatchshapes/>
+  <symbols3d/>
+</qgis_style>

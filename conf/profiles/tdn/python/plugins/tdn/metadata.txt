@@ -1,0 +1,21 @@
+[general]
+name=TDN
+description=Werkzeuge für Tour de Natur
+version=3.0
+qgisMinimumVersion=3.0
+author=Dr.Ing-Claas Leiner
+email=claas.leiner@gkg-kassel.de
+
+
+; optional metadata entries
+changelog=  
+    4.00 Version Final 2026 Juli
+icon=tdn.png
+experimental=False
+deprecated=False
+
+
+
+
+homepage=http://gkg-kassel.de
+repository=http://gkg-kassel.de

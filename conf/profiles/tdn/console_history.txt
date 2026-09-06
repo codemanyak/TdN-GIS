@@ -1,0 +1,81 @@
+vlayer = QgsProject.instance().mapLayersByName("Etappen")[0]
+et_list = []
+objekte = vlayer.getFeatures()
+for feature in objekte:
+    print(feature["bezeichnung"])
+    wert = feature["bezeichnung"]
+    et_list.append(wert)
+print(et_list)
+etap =   QgsProject.instance().mapLayersByName("richtungs_folge")[0]
+etap.name()
+for feat in etap.getFeatures():
+    wegeliste.append(feat['etappe'])
+wegeliste = []
+for feat in etap.getFeatures():
+    wegeliste.append(feat['etappe'])
+print(wegeliste)
+list(set(wegeliste))
+ wegeliste = list(set(wegeliste))
+wegeliste.sort()
+ print(wegeliste )
+etap =   QgsProject.instance().mapLayersByName("richtungs_folge")[0]
+wegeliste = []
+for feat in etap.getFeatures():
+    wegeliste.append(feat['etappe'])
+ wegeliste = list(set(wegeliste))
+wegeliste.sort()
+ print(wegeliste )
+svgpfad = os.path.normpath(plugin_dir + '/home/claas/Dokumente/arbeit/werkver/2026/TDN/TDN_GIS/conf/profiles/tdn/python/plugins/tdn/pic')
+import os
+svgpfad = os.path.normpath(plugin_dir + '/home/claas/Dokumente/arbeit/werkver/2026/TDN/TDN_GIS/conf/profiles/tdn/python/plugins/tdn/pic')
+svgpfad = os.path.normpath('/home/claas/Dokumente/arbeit/werkver/2026/TDN/TDN_GIS/conf/profiles/tdn/python/plugins/tdn/pic')
+os.chdir('/home/claas/Dokumente/arbeit/werkver/2026/TDN/TDN_GIS/conf/profiles/tdn/python/plugins/tdn')
+import glob
+svgmuster = r"*.svg" 
+svgs = glob.glob(muster) 
+svgs = glob.glob(svgmuster)
+import shutil
+for objs in svgs:
+    shutil.copy2(obj,svgpfad + '/' + objs)
+for objs in svgs:
+    shutil.copy2(objs,svgpfad + '/' + objs)
+for objs in svgs:
+    shutil.copy2(objs,svgpfad + '/' + objs)
+    os.remove(objs)
+ svgmuster = r"*.svg|*.png"   # Suchmuster fü
+svgs = glob.glob(svgmuster) # Eine Liste aller dateien wird erzeugt
+for objs in svgs:
+    shutil.copy2(objs,svgpfad + '/' + objs)
+ svgmuster = r"(*.svg)|(*.png)"   # Suchmuster fü
+for objs in svgs:
+    shutil.copy2(objs,svgpfad + '/' + objs)
+svgmuster = r"*.svg" 
+pngmuster = r"*.png"   # Suchmuster fü
+print(pngmuster)
+svgs = glob.glob(svgmuster) # Eine Liste aller dateien wird erzeugt
+pngs = glob.glob(pngmuster)
+print(pngs)
+cplist = svgs + pngs
+print(cplist)
+for objs in cplist:
+    shutil.copy2(objs,svgpfad + '/' + objs)
+for objs in cplist:
+        os.remove(objs) 
+qgis.gui.QgsMapCanvasTracer.setActionEnableTracing()
+qgis.gui.QgsMapCanvasTracer.setActionEnableTracing(True)
+qgis.gui.QgsMapCanvasTracer.actionEnableTracing()
+qgis.gui.QgsMapCanvasTracer.actionEnableTracing(True)
+for a in iface.mainWindow().findChildren(QAction):
+    if "trace" in a.objectName().lower() or "trace" in a.text().lower() or "Spurverfolgung" in a.objectName().lower() or "Spurverfolgung" in a.text().lower():
+        print(a.objectName(), a.text(), a.isCheckable(), a.isChecked())
+for a in iface.mainWindow().findChildren(QAction):
+    if "spur" in a.text().lower():
+        print(a.objectName(), a.text())
+EnableTracingAction.setChecked(True)
+iface.mainWindow().EnableTracingAction.setChecked(True)
+iface.mainWindow().findChildren(QAction, "EnableTracingAction")[0].setChecked(True)
+project = QgsProject.instance()
+projekt = os.path.normpath(project.absoluteFilePath())
+import os
+os.path.split(projekt)[0]
+os.path.split(projekt)[1]

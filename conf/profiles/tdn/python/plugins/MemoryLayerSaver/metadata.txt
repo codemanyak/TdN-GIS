@@ -1,0 +1,38 @@
+[general]
+name=Memory Layer Saver
+description=Makes memory layers persistent
+about=Makes memory layers persistent so that they are restored when a project is closed and reopened.
+ The memory provider data is streamed in a portable binary format (QDataStream) and embedded
+ in the project attachments (inside the qgz archive, or in attachments.zip for unzipped projects).
+category=Vector
+hasProcessingProvider=no
+icon=icon.svg
+tags=memory,scratch,persistent
+
+# credits and contact
+author=Chris Crook, Yoann Quenach de Quivillic
+email=ccrook@linz.govt.nz, yoann.quenach@gmail.com
+homepage=http://github.com/YoannQDQ/qgis-memory-layer-saver
+tracker=http://github.com/YoannQDQ/qgis-memory-layer-saver/issues
+repository=http://github.com/YoannQDQ/qgis-memory-layer-saver
+
+# experimental flag
+deprecated=False
+experimental=False
+supportsQt6=True
+qgisMinimumVersion=3.40
+qgisMaximumVersion=4.99
+
+# versioning
+version=6.0.1
+changelog=
+ Version 6.0.1:
+ - QGIS4 Compatibility
+
+ Version 6.0.0:
+ - Qt6 Compatibility
+
+ Version 5.0.2:
+ - Fixes issue #16 - Corrupted mldata when making layer permanent
+
+

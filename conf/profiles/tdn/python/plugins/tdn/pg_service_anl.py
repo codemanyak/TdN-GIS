@@ -1,0 +1,133 @@
+
+# encoding: utf-8
+#-----------------------------------------------------------
+# Autor
+# Claas Leiner GKG
+#
+#-----------------------------------------------------------
+# Licensed under the terms of GNU GPL 2
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#---------------------------------------------------------------------
+from PyQt5.QtWidgets import QDialog, QVBoxLayout, QLineEdit, QLabel, QPushButton, QHBoxLayout
+import os
+import sys
+from sys import platform
+from qgis.core import QgsProject
+
+class pg_service_an(QDialog):
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        
+        self.setWindowTitle("pg_service_datei anlegen")
+
+        # Hauptlayout erstellen
+        layout = QVBoxLayout(self)
+
+        # Erstellen der Texteingabefelder mit Vorgabewerten
+        self.label1 = QLabel("Host")
+        self.eingabe_host = QLineEdit()
+        self.eingabe_host.setText("85.215.48.125")
+        layout.addWidget(self.label1)
+        layout.addWidget(self.eingabe_host)
+    
+
+        self.label2 = QLabel("Port")
+        self.eingabe_port = QLineEdit()
+        self.eingabe_port.setText("51353")
+        layout.addWidget(self.label2)
+        layout.addWidget(self.eingabe_port)
+
+        self.label3 = QLabel("Nutzer")    
+        self.eingabe_nutzer = QLineEdit()  
+        layout.addWidget(self.label3)
+        layout.addWidget(self.eingabe_nutzer)
+        
+        
+        self.label4 = QLabel("Passwort")
+        self.eingabe_passwort = QLineEdit()
+        layout.addWidget(self.label4)
+        layout.addWidget(self.eingabe_passwort)
+        
+        self.label5 = QLabel("Datenbank")
+        self.eingabe_db = QLineEdit()
+        self.eingabe_db.setText("tdn")
+        layout.addWidget(self.label5)
+        layout.addWidget(self.eingabe_db)
+
+
+        # OK- und Abbrechen-Buttons erstellen
+        button_layout = QHBoxLayout()
+        self.ok_button = QPushButton("OK")
+        self.cancel_button = QPushButton("Abbrechen")
+        button_layout.addWidget(self.ok_button)
+        button_layout.addWidget(self.cancel_button)
+        layout.addLayout(button_layout)
+
+        # Signale verbinden
+        self.ok_button.clicked.connect(self.on_ok_clicked)
+        self.cancel_button.clicked.connect(self.on_cancel_clicked)
+
+    def on_ok_clicked(self):
+        host = self.eingabe_host.text()
+        port = self.eingabe_port.text()
+        nutzer = self.eingabe_nutzer.text()
+        passwort = self.eingabe_passwort.text()
+        datenbank = self.eingabe_db.text()
+        print(f"Host: {host}, WPort: {port}, Nutzer: {nutzer} , passwort: {passwort}")
+        
+        # Hier können Sie die eingegebenen Werte weiterverarbeiten
+        
+        project = QgsProject.instance()
+        
+        projekt = os.path.normpath(project.absoluteFilePath()) #
+        # verzeichnis und dateinamen des Projektes trennen
+        verz = os.path.split(projekt)[0]
+        tdn_verz = os.path.dirname(verz)
+        
+        pg_conf_kopf = '[tdn_gis]'
+        pg_conf_list = ["host=" + host, "port=" + port, "user=" + nutzer, "password=" + passwort, "sslmode=require", "dbname=" + datenbank, "keepalives=1", "connect_timeout=0", "keepalives_idle=10", "tcp_user_timeout=3600", "keepalives_interval=60", "keepalives_count=100"]
+        print(pg_conf_list)        
+        
+        #project = QgsProject.instance()
+        #projekt_verz = os.path.normcase(project.homePath())
+        skript = os.path.dirname(os.path.normpath(os.path.realpath(__file__)))
+        pg_serv_verz = os.path.dirname(os.path.dirname(os.path.dirname((os.path.dirname(os.path.dirname(os.path.dirname(skript))))))) + '/conf'
+        
+        if platform == "win32":
+            #pg_serv_verz = skript
+            pg_service_pfad = os.path.normpath(pg_serv_verz + "/pg_service.conf")
+        else:
+            pg_service_pfad = os.path.expanduser("~/.pg_service.conf")
+            
+        print(pg_service_pfad)
+
+        datei = open(pg_service_pfad,'a')
+        datei.write(pg_conf_kopf + "\n")
+
+        
+        datei.close()
+        datei = open(pg_service_pfad,'a')
+        for i in pg_conf_list:
+            datei.write(str(i) + "\n")        
+        datei.close()
+        
+
+        self.accept()
+
+    def on_cancel_clicked(self):
+        self.reject()
+'''
+# Funktion zum Öffnen des Dialogs
+def pg_service_anlegen():
+    dialog = pg_service_an()
+    if dialog.exec_() == QDialog.Accepted:
+        # Der OK-Button wurde geklickt, Werte können hier weiterverarbeitet werden
+        pass
+
+# Beispiel aufrufen
+pg_service_anlegen()
+'''
